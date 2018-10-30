@@ -15,6 +15,8 @@ int ** randGraph(int n) {
             }
             else {
                 a[i][j]=rand()%1000+1;
+                if (a[i][j]%2)
+                a[i][j] = 0;
             }
           }
       }
@@ -22,7 +24,7 @@ int ** randGraph(int n) {
 }
 
 int main () {
-  int n = 800;
+  int n = 300;
   int **a=randGraph(n);
   ofstream myfile("input.txt");
   for (int i=0; i<n; i++)
@@ -34,13 +36,13 @@ int main () {
   system("g++ -o ra rectangular.cpp");
 
   auto start = high_resolution_clock::now();
-  system("fw 800");
+  system("fw 300");
   auto stop = high_resolution_clock::now();
   auto duration = duration_cast<microseconds>(stop - start);
   cout << "Time taken by function fw: " << duration.count() << " microseconds" << endl;
 
   start = high_resolution_clock::now();
-  system("ra 800");
+  system("ra 300");
   stop = high_resolution_clock::now();
   duration = duration_cast<microseconds>(stop - start);
   cout << "Time taken by function ra: " << duration.count() << " microseconds" << endl;

@@ -23,7 +23,8 @@ void print(std::vector<std::vector<double>> dist, std::vector<std::vector<int>> 
 
 void solve(std::vector<std::vector<double>> dist, const int num_vertices) {
   // std::bitset<10000> row_inf(0), col_inf(0);
-  register unsigned int t, r, s, i, k, j;
+  // std::bitset<300> col_inf;
+  register unsigned int t, r, s, i, k, j, m;
   std::vector<std::vector<int>> next(num_vertices);
   for (i=0; i<num_vertices; ++i)
     next[i].resize(num_vertices);
@@ -38,10 +39,10 @@ void solve(std::vector<std::vector<double>> dist, const int num_vertices) {
   for (j = 0; j < num_vertices; ++j) {
     // row_inf.reset();
     // col_inf.reset();
-    // for (int m=0; m<num_vertices; m++) {
-    //   if (dist[m][j]==INT_MAX)
-    //     row_inf[m] = 1;
-    //   if (dist[j][m]==INT_MAX)
+    // for (m=0; m<num_vertices; ++m) {
+    // //   if (dist[m][j]==INT_MAX)
+    // //     row_inf[m] = 1;
+    // if (dist[j][m]==INT_MAX)
     //     col_inf[m] = 1;
     // }
     for (i = 0; i < num_vertices; ++i) {
