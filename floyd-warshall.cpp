@@ -22,6 +22,7 @@ void print(std::vector<std::vector<double>> dist, std::vector<std::vector<int>> 
 }
 
 void solve(std::vector<std::vector<double>> dist, const int num_vertices) {
+  auto start = std::chrono::high_resolution_clock::now();
   std::vector<std::vector<int>> next(num_vertices);
   for (auto i = 0; i < num_vertices; i++) {
     for (auto j = 0; j < num_vertices; j++) {
@@ -33,7 +34,6 @@ void solve(std::vector<std::vector<double>> dist, const int num_vertices) {
       }
     }
   }
-  auto start = std::chrono::high_resolution_clock::now();
   for (auto k = 0; k < num_vertices; k++) {
     for (auto i = 0; i < num_vertices; i++) {
       for (auto j = 0; j < num_vertices; j++) {
@@ -49,6 +49,7 @@ void solve(std::vector<std::vector<double>> dist, const int num_vertices) {
   std::ofstream myfile("fw_output.txt");
   myfile << duration.count();
   myfile.close();
+  // print(dist, next);
 }
 
 int main (int argc, char **argv) {
@@ -57,11 +58,12 @@ int main (int argc, char **argv) {
   for (int i=0; i<n; i++) {
     w[i].resize(n);
   }
-
+  int temp;
   std::ifstream myfile("input.txt", std::ios::in);
   for (int i=0; i<n; i++)
     for (int j=0; j<n; j++) {
-      myfile>>w[i][j];
+      myfile>>temp;
+      w[i][j] = temp;
       if (w[i][j]==0)
         w[i][j] = INT_MAX;
     }
